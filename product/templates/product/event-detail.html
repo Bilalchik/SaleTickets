@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+            <section class="hero-section hero-50 d-flex justify-content-center align-items-center" id="section_1">
+
+                <div class="section-overlay"></div>
+
+                <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#3D405B" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z" stroke-width="0"></path> <path fill="#3D405B" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z" stroke-width="0"></path> <path fill="#3D405B" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z" stroke-width="0"></path></svg>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+
+                            <h1 class="text-white mb-4 pb-2">Event Detail.</h1>
+
+                            <a href="#section_2" class="btn custom-btn smoothscroll me-3">Learn more</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#ffffff" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z" stroke-width="0"></path> <path fill="#ffffff" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z" stroke-width="0"></path> <path fill="#ffffff" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z" stroke-width="0"></path></svg>
+            </section>
+
+
+            <section class="events-section events-detail-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-8 col-12 mx-auto">
+                            <h2 class="mb-lg-5 mb-4">{{ event.title }}</h2>
+
+                            <div class="custom-block-image-wrap">
+                                <img src="{{ event.logo.url }}" class="custom-block-image img-fluid" alt="">
+                            </div>
+
+                            <div class="custom-block-info">
+                                <h3 class="mb-3">Golf Club based in Orlando</h3>
+
+                                <p>{{ event.description }}</p>
+
+                                <div class="events-detail-info row my-5">
+                                    <div class="col-lg-12 col-12">
+                                        <h4 class="mb-3">Инфо: </h4>
+                                    </div>
+
+                                    <div class="col-lg-4 col-12">
+                                        <span class="custom-block-span">Дата:</span>
+
+                                        <p class="mb-0">{{ event.event_date }}</p>
+                                    </div>
+
+                                    <div class="col-lg-4 col-12 my-3 my-lg-0">
+                                        <span class="custom-block-span">Локация:</span>
+
+                                        <p class="mb-0">{{ event.location }}</p>
+                                    </div>
+
+                                    <div class="col-lg-4 col-12">
+                                        <span class="custom-block-span">Цена:</span>
+
+                                        <p class="mb-0">{{ event.price }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="contact-info">
+                                    <div class="contact-info-item">
+                                            <center>
+                                                <h4 style="color:white;">Хотите купить билет?</h4>
+                                                <form method="post" action=".">
+                                                    {% csrf_token %}
+                                                    <label style="color:white;">Введите кол-во билетов: </label><br>
+                                                    <input type="number" id="quantity" name="quantity" class="form-control" required="" style="width: 100px;"><br>
+<!--                                                    <p style="color:white;">Общая стоимость: <span id="total-price">0</span> сом</p>-->
+                                                    <button type="submit" class="btn custom-btn">Купить</button>
+                                                </form>
+                                            </center>
+                                    </div>
+
+                                    <img src="{% static 'images/WorldMap.svg' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+{% endblock %}
+
+
+
+
+
